@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/itsicon.png">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login Page</title>
+  </head>
+
+    <body>
+      <nav>
+        <div class="nav-wrapper blue darken-2">
+            <!--<a href="index.html" class="brand-logo">Logo</a>-->
+            <img class="responsive-img" style="height: 50px;" src="images/itslogowhite.png" />
+        </div>
+      </nav>
+        <main>
+          <center>
+            <br/>
+            <br/>
+            <div class="container">
+              <div class="login-box" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+                
+                <img class="responsive-img" style="width: 250px;" src="images/itslogo.png" />
+
+                <form class="col s12" action="login.php" method="post">
+                  <div class='row'>
+                    <div class='col s12'>
+                    </div>
+                  </div>
+      
+                  <div class='row'>
+                    <div class="input-field col s12">
+                      <label for="myfile">Select a file:</label>
+                      <input type="file" id="myfile" name="myfile">
+                    </div>
+                  </div>
+      
+                  <br/>
+                  <center>
+                    <div class='row'>
+                      <button type='submit' id='btn_login' name='btn_login' class='col s4 offset-s4 btn btn-small waves-effect  blue darken-2'>Compress</button>
+                    </div>
+                  </center>
+                </form>
+
+              </div>
+            </div>
+          </center>
+      
+          <div class="section"></div>
+          <div class="section"></div>
+        </main>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script> (sementara belum)-->
+    </body>
+</html>
