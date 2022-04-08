@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     $newname = "plain_text." . $ext;
 
     // $target = 'images/' . $newname;
-    move_uploaded_file($_FILES['plain_text']['tmp_name'], "Files/".$newname);
+    move_uploaded_file($_FILES['plain_text']['tmp_name'], "files/".$newname);
     header("location: fileCompress.py");
 }
 ?>
