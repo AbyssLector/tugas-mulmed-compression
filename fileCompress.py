@@ -5,19 +5,19 @@ from struct import *
 print("Content-type: text/html\n\n")
 
 def compressText(data):
-    # Building and initializing the dictionary.
+    # Membangun dan menginisialisasi dictionary
     file = open(data)                 
     data = file.read()                      
 
     dictionary_size = 256                   
     dictionary = {chr(i): i for i in range(dictionary_size)}    
-    string = ""             # String is null.
-    compressed_data = []    # variable to store the compressed data.
+    string = ""             # String adalah NULL
+    compressed_data = []    # Variabel untuk menyimpan data hasil compression
 
-    # iterating through the input symbols.
-    # LZW Compression algorithm
+    # Iterasi karakter yang ada
+    # Dilanjutkan Algoritma kompresi LZW
     for symbol in data:                     
-        string_plus_symbol = string + symbol # get input symbol.
+        string_plus_symbol = string + symbol # Mendapatkan simbol
         if string_plus_symbol in dictionary: 
             string = string_plus_symbol
         else:
@@ -29,11 +29,13 @@ def compressText(data):
     if string in dictionary:
         compressed_data.append(dictionary[string])
 
-    # storing the compressed string into a file (byte-wise).
-    output_file = open("files/compressed.lzw", "wb") #menyimpan file utk dikirim ke client
+    # Menyimpan compressed string ke dalam file 
+    output_file = open("files/compressed.lzw", "wb") 
+    #membuka file untuk menyimpan hasil compress
     for data in compressed_data:
-        output_file.write(pack('>H',int(data))) #memasukan file dalam bentuk binary deg bantuan struck.pack
-            #>h yang menandakan big endian unsigned sort
+        output_file.write(pack('>H',int(data))) 
+        #memasukan file dalam bentuk binary deg bantuan struck.pack
+        #>h yang menandakan big endian unsigned sort
         
     return output_file
     #output_file.close()
@@ -50,12 +52,31 @@ html = """
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APA INI</title>
+    <title>Dictionary Compression</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="#">
 </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Compression</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="#">
+</head>
+<nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="index.html" class="brand-logo">Compression</a>
+            </div>
+        </div>
+    </nav>
 <body>
+<br>
     <div class="container">
         <div class="row">
             <h4>Compressed Text</h4>

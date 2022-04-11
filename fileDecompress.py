@@ -6,14 +6,14 @@ import io
 print("Content-type: text/html\n\n")
 
 def decompressText(data):
-    # Building and initializing the dictionary.
+    # Membuka dan menginisialisasi dictionary
     file = open(data, "rb")
     compressed_data = []
     next_code = 256
     decompressed_data = ""
     string = ""
 
-    # Reading the compressed file.
+    # Membaca file LZW
     while True:
         rec = file.read(2)
         if len(rec) != 2:
@@ -21,12 +21,11 @@ def decompressText(data):
         (data, ) = unpack('>H', rec)
         compressed_data.append(data)
 
-    # Building and initializing the dictionary.
+    # Membangun dan inisialisasi Dictionary
     dictionary_size = 256
     dictionary = dict([(x, chr(x)) for x in range(dictionary_size)])
 
-    # iterating through the codes.
-    # LZW Decompression algorithm
+    # Iterasi untuk algoritma LZW Decompression
     for code in compressed_data:
         if not (code in dictionary):
             dictionary[code] = string + (string[0])
@@ -36,7 +35,7 @@ def decompressText(data):
             next_code += 1
         string = dictionary[code]
 
-    # storing the decompressed string into a file.
+    # Menyimpan string hasil decompression dalam file
     output_file = open("files/decompressed.txt", "w")
     for data in decompressed_data:
         output_file.write(data)
@@ -60,7 +59,26 @@ html = """
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="#">
 </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Decompression</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="#">
+</head>
+<nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="index.html" class="brand-logo">Decompression</a>
+            </div>
+        </div>
+    </nav>
 <body>
+<br>
     <div class="container">
         <div class="row">
             <h4>Decompressed Text</h4>
